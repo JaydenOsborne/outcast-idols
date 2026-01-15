@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Available symbols
+
+  // Symbols available in the lock
   const symbols = ["🌙", "🔥", "🌿", "🌊", "🗿", "🪶"];
 
-  // ✅ Change this to your real solution
+  // ✅ CHANGE THIS to your real solution
   const correctSequence = ["🌙", "🔥", "🌿", "🌊", "🗿", "🪶"];
 
-  // Optional: what shows inside the reveal modal
-  const claimCodeText = "OUTCAST-IDOL"; // change this to your idol claim phrase
+  // What appears in the reveal modal
+  const claimCodeText = "OUTCAST-S6-IDOL"; // change this if you want
 
-  const boxes = document.querySelectorAll(".box");
+  const boxes = document.querySelectorAll("#idol-puzzle .box");
   const overlay = document.getElementById("revealOverlay");
   const closeBtn = document.getElementById("closeReveal");
   const copyBtn = document.getElementById("copyCode");
@@ -17,24 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
   claimCode.textContent = claimCodeText;
 
   // Cycle symbols
-  boxes.forEach(box => {
-    const symbol = box.querySelector(".symbol");
+  boxes.forEach((box) => {
+    const symbolDiv = box.querySelector(".symbol");
 
     box.querySelector(".up").addEventListener("click", () => {
-      let i = symbols.indexOf(symbol.textContent);
-      symbol.textContent = symbols[(i + 1) % symbols.length];
+      let i = symbols.indexOf(symbolDiv.textContent);
+      symbolDiv.textContent = symbols[(i + 1) % symbols.length];
     });
 
     box.querySelector(".down").addEventListener("click", () => {
-      let i = symbols.indexOf(symbol.textContent);
-      symbol.textContent = symbols[(i - 1 + symbols.length) % symbols.length];
+      let i = symbols.indexOf(symbolDiv.textContent);
+      symbolDiv.textContent = symbols[(i - 1 + symbols.length) % symbols.length];
     });
   });
 
   function openReveal() {
     overlay.classList.add("show");
     overlay.setAttribute("aria-hidden", "false");
-    // prevent background scroll
     document.body.style.overflow = "hidden";
   }
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   }
 
-  // Close on background click
+  // Close on click outside the modal
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeReveal();
   });
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close button
   closeBtn.addEventListener("click", closeReveal);
 
-  // Close on Escape key
+  // Close on Escape
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("show")) closeReveal();
   });
@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       copyBtn.textContent = "Copied!";
       setTimeout(() => (copyBtn.textContent = "Copy Claim Code"), 1200);
     } catch {
-      // fallback
       const temp = document.createElement("textarea");
       temp.value = claimCodeText;
       document.body.appendChild(temp);
@@ -78,13 +77,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Submit check
   document.getElementById("submitPuzzle").addEventListener("click", () => {
-    const attempt = Array.from(boxes).map(b => b.querySelector(".symbol").textContent);
+    const attempt = Array.from(boxes).map((b) => b.querySelector(".symbol").textContent);
 
     if (attempt.join("") === correctSequence.join("")) {
       openReveal();
     } else {
-      // Optional: fancier fail message later—keeping simple for now
       alert("Incorrect sequence. Keep trying!");
     }
   });
+
 });
