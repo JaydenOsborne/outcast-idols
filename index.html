@@ -2,24 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Outcast S6 Idol</title>
+  <title>Outcast – Hidden Idol</title>
 
-  <!-- Force-load the newest CSS/JS (cache-bust) -->
-  <link rel="stylesheet" href="./style.css?v=999">
-  <script src="./script.js?v=999" defer></script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
 </head>
-
-
 <body>
 
-<header class="season-header">
-  <img src="o6headerlogo.png" alt="Outcast Season Six">
-  <div class="subtitle">Hidden Immunity Idol</div>
-</header>
-
-<main class="wrap">
-  <div id="message" class="message">Enter the correct sequence.</div>
+  <h1>Hidden Immunity Idol Lock</h1>
 
   <div id="idol-puzzle">
     <div class="box">
@@ -27,26 +17,31 @@
       <div class="symbol">🌙</div>
       <button class="arrow down">▼</button>
     </div>
+
     <div class="box">
       <button class="arrow up">▲</button>
       <div class="symbol">🔥</div>
       <button class="arrow down">▼</button>
     </div>
+
     <div class="box">
       <button class="arrow up">▲</button>
       <div class="symbol">🌿</div>
       <button class="arrow down">▼</button>
     </div>
+
     <div class="box">
       <button class="arrow up">▲</button>
       <div class="symbol">🌊</div>
       <button class="arrow down">▼</button>
     </div>
+
     <div class="box">
       <button class="arrow up">▲</button>
       <div class="symbol">🗿</div>
       <button class="arrow down">▼</button>
     </div>
+
     <div class="box">
       <button class="arrow up">▲</button>
       <div class="symbol">🪶</div>
@@ -55,10 +50,8 @@
   </div>
 
   <button id="submitPuzzle">Submit</button>
-</main>
 
-<audio id="drumSound" src="drum.mp3" preload="auto"></audio>
+  <p id="result"></p>
 
-<script src="script.js"></script>
 </body>
 </html>
