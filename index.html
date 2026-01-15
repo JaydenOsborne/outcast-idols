@@ -11,44 +11,49 @@
 
 <div id="idol-puzzle">
   <div class="box">
-    <button class="arrow up">▲</button>
+    <button class="arrow up" aria-label="Increase symbol">▲</button>
     <div class="symbol">🌙</div>
-    <button class="arrow down">▼</button>
+    <button class="arrow down" aria-label="Decrease symbol">▼</button>
   </div>
 
   <div class="box">
-    <button class="arrow up">▲</button>
+    <button class="arrow up" aria-label="Increase symbol">▲</button>
     <div class="symbol">🔥</div>
-    <button class="arrow down">▼</button>
+    <button class="arrow down" aria-label="Decrease symbol">▼</button>
   </div>
 
   <div class="box">
-    <button class="arrow up">▲</button>
+    <button class="arrow up" aria-label="Increase symbol">▲</button>
     <div class="symbol">🌿</div>
-    <button class="arrow down">▼</button>
+    <button class="arrow down" aria-label="Decrease symbol">▼</button>
   </div>
 
   <div class="box">
-    <button class="arrow up">▲</button>
+    <button class="arrow up" aria-label="Increase symbol">▲</button>
     <div class="symbol">🌊</div>
-    <button class="arrow down">▼</button>
+    <button class="arrow down" aria-label="Decrease symbol">▼</button>
   </div>
 
   <div class="box">
-    <button class="arrow up">▲</button>
+    <button class="arrow up" aria-label="Increase symbol">▲</button>
     <div class="symbol">🗿</div>
-    <button class="arrow down">▼</button>
+    <button class="arrow down" aria-label="Decrease symbol">▼</button>
   </div>
 
   <div class="box">
-    <button class="arrow up">▲</button>
+    <button class="arrow up" aria-label="Increase symbol">▲</button>
     <div class="symbol">🪶</div>
-    <button class="arrow down">▼</button>
+    <button class="arrow down" aria-label="Decrease symbol">▼</button>
   </div>
 </div>
 
 <button id="submitPuzzle">Submit</button>
 
-<script src="script.js"></script>
-</body>
-</html>
+<!-- SURVIVOR-STYLE REVEAL MODAL -->
+<div id="revealOverlay" class="overlay" aria-hidden="true">
+  <div class="reveal" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
+    <div class="reveal-glow"></div>
+
+    <div class="reveal-header">
+      <div class="stamp">FOUND</div>
+      <h2 id="revealTitle">Hidden Immunity Idol</h2>
