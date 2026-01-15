@@ -337,4 +337,68 @@ body::before{
 }
 
 .value.code{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Mona
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: rgba(63,191,127,0.95);
+}
+
+.reveal-actions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 22px 22px;
+  flex-wrap: wrap;
+}
+
+.btn{
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  background: rgba(255,255,255,0.07);
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.btn:hover{ transform: translateY(-1px); }
+
+.btn.primary{
+  background: rgba(246,178,26,0.20);
+}
+
+.btn.primary:hover{
+  background: rgba(246,178,26,0.30);
+}
+
+.btn.secondary{
+  background: rgba(63,191,127,0.16);
+}
+
+.btn.secondary:hover{
+  background: rgba(63,191,127,0.24);
+}
+
+.sparkle{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18), transparent 12%),
+    radial-gradient(circle at 80% 25%, rgba(255,255,255,0.14), transparent 12%),
+    radial-gradient(circle at 35% 75%, rgba(246,178,26,0.18), transparent 14%),
+    radial-gradient(circle at 70% 70%, rgba(63,191,127,0.16), transparent 14%);
+  opacity: 0;
+  animation: sparkleIn 700ms ease-out 220ms forwards;
+}
+
+@keyframes sparkleIn{
+  to { opacity: 1; }
+}
+
+@media (max-width: 520px){
+  .idol-row{
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .idol-details{ width: 100%; }
+}
