@@ -1,81 +1,97 @@
-.season-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 26px;
-}
-
-.season-header img {
-  max-width: 420px;
-  width: 90%;
-  height: auto;
-  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.6));
-}
-
-.subtitle {
-  margin-top: 6px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255, 230, 150, 0.9);
-}
-
-:root {
-  --bg: #0f1a12;
-  --panel: rgba(20, 28, 22, 0.94);
+:root{
+  --bg: #07110b;
+  --panel: rgba(14, 20, 16, 0.93);
   --text: #f4f4f0;
-  --muted: rgba(244,244,240,0.7);
+  --muted: rgba(244,244,240,0.72);
 
-  /* Costa Rica palette */
+  /* Costa Rica vibe */
   --accent: #f6b21a;   /* volcanic gold */
   --accent2: #3fbf7f;  /* jungle green */
 }
 
+* { box-sizing: border-box; }
 
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
   text-align: center;
   margin: 0;
-  padding: 40px 12px;
-  color: #f4f4f7;
+  padding: 34px 12px 60px;
 
+  /* Background image + readability overlay */
   background-image:
-    linear-gradient(
-      rgba(0,0,0,0.55),
-      rgba(0,0,0,0.75)
-    ),
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
     url("o6background.png");
-
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
+/* If the background filename is wrong, at least show a nice fallback */
+@supports not (background-attachment: fixed) {
+  body { background-attachment: scroll; }
+}
 
-h1{
-  letter-spacing: 0.5px;
-  margin-bottom: 18px;
+.season-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.season-header img {
+  width: min(520px, 92vw);
+  height: auto;
+  filter: drop-shadow(0 14px 28px rgba(0,0,0,0.65));
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 230, 150, 0.92);
+  text-shadow: 0 6px 16px rgba(0,0,0,0.55);
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
 }
 
 #idol-puzzle {
   display: flex;
   justify-content: center;
   gap: 14px;
-  margin: 18px 0 22px;
   flex-wrap: wrap;
+
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: linear-gradient(rgba(0,0,0,0.32), rgba(0,0,0,0.55));
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
 }
 
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 30px;
+
+  min-width: 68px;
   padding: 10px 10px 8px;
   border-radius: 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-  min-width: 64px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.20);
+}
+
+.symbol {
+  margin: 6px 0;
+  font-size: 30px;
 }
 
 .arrow {
@@ -92,25 +108,21 @@ h1{
   transform: translateY(-1px);
 }
 
-.symbol {
-  margin: 6px 0;
-  font-size: 30px;
-}
-
 #submitPuzzle{
   padding: 10px 18px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,204,102,0.14);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(246,178,26,0.18);
   color: var(--text);
   cursor: pointer;
   font-size: 15px;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.3px;
   transition: transform 120ms ease, background 120ms ease;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.45);
 }
 
 #submitPuzzle:hover{
-  background: rgba(255,204,102,0.22);
+  background: rgba(246,178,26,0.28);
   transform: translateY(-1px);
 }
 
@@ -122,7 +134,7 @@ h1{
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: rgba(0,0,0,0.70);
+  background: rgba(0,0,0,0.72);
   backdrop-filter: blur(6px);
   z-index: 9999;
 }
@@ -143,7 +155,7 @@ h1{
   border-radius: 22px;
   background: var(--panel);
   border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 30px 90px rgba(0,0,0,0.60);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.62);
   overflow: hidden;
   transform: translateY(10px) scale(0.98);
   opacity: 0;
@@ -156,10 +168,11 @@ h1{
 
 .reveal-glow{
   position: absolute;
-  inset: -120px -120px auto -120px;
-  height: 240px;
-  background: radial-gradient(circle at 50% 50%, rgba(255,204,102,0.28), transparent 60%),
-              radial-gradient(circle at 30% 30%, rgba(102,217,255,0.16), transparent 55%);
+  inset: -130px -130px auto -130px;
+  height: 260px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(246,178,26,0.30), transparent 60%),
+    radial-gradient(circle at 30% 30%, rgba(63,191,127,0.18), transparent 55%);
   filter: blur(2px);
   pointer-events: none;
 }
@@ -170,7 +183,7 @@ h1{
 
 .stamp{
   display: inline-block;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: 2px;
   color: rgba(0,0,0,0.75);
   background: linear-gradient(135deg, var(--accent), #ffdca1);
@@ -207,9 +220,8 @@ h1{
   display: grid;
   place-items: center;
   border-radius: 18px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.20);
   animation: idolPop 520ms cubic-bezier(.2,.9,.2,1) 80ms both;
 }
 
@@ -222,7 +234,7 @@ h1{
   text-align: left;
   padding: 10px 12px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -250,7 +262,7 @@ h1{
 
 .value.code{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  color: var(--accent2);
+  color: rgba(63,191,127,0.95);
 }
 
 .reveal-actions{
@@ -258,47 +270,47 @@ h1{
   justify-content: flex-end;
   gap: 10px;
   padding: 16px 22px 22px;
+  flex-wrap: wrap;
 }
 
 .btn{
   padding: 10px 14px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.14);
   cursor: pointer;
   font-size: 14px;
   color: var(--text);
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.07);
   transition: transform 120ms ease, background 120ms ease;
 }
 
 .btn:hover{ transform: translateY(-1px); }
 
 .btn.primary{
-  background: rgba(255,204,102,0.20);
+  background: rgba(246,178,26,0.20);
 }
 
 .btn.primary:hover{
-  background: rgba(255,204,102,0.30);
+  background: rgba(246,178,26,0.30);
 }
 
 .btn.secondary{
-  background: rgba(102,217,255,0.14);
+  background: rgba(63,191,127,0.16);
 }
 
 .btn.secondary:hover{
-  background: rgba(102,217,255,0.22);
+  background: rgba(63,191,127,0.24);
 }
 
-/* Sparkle layer */
 .sparkle{
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.20), transparent 12%),
-    radial-gradient(circle at 80% 25%, rgba(255,255,255,0.18), transparent 12%),
-    radial-gradient(circle at 35% 75%, rgba(255,204,102,0.18), transparent 14%),
-    radial-gradient(circle at 70% 70%, rgba(102,217,255,0.16), transparent 14%);
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18), transparent 12%),
+    radial-gradient(circle at 80% 25%, rgba(255,255,255,0.14), transparent 12%),
+    radial-gradient(circle at 35% 75%, rgba(246,178,26,0.18), transparent 14%),
+    radial-gradient(circle at 70% 70%, rgba(63,191,127,0.16), transparent 14%);
   opacity: 0;
   animation: sparkleIn 700ms ease-out 220ms forwards;
 }
@@ -313,5 +325,4 @@ h1{
     justify-items: center;
   }
   .idol-details{ width: 100%; }
-  .reveal-actions{ justify-content: center; flex-wrap: wrap; }
 }
