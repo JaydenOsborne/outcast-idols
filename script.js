@@ -1,61 +1,34 @@
-const symbols = ["🌙","🔥","🌿","🌊","🗿","🪶"];
-const correct = ["🌙","🔥","🌿","🌊","🗿","🪶"];
+const symbols = ["🌙", "🔥", "🌿", "🌊", "🗿", "🪶"];
+const correctSequence = ["🌙", "🔥", "🌿", "🌊", "🗿", "🪶"];
 
 const boxes = document.querySelectorAll(".box");
-const puzzle = document.getElementById("idol-puzzle");
-const message = document.getElementById("message");
-const drum = document.getElementById("drumSound");
-
-let fails = 0;
+const result = document.getElementById("result");
 
 // Cycle symbols
 boxes.forEach(box => {
-  const symbol = box.querySelector(".symbol");
+  const symbolDiv = box.querySelector(".symbol");
 
   box.querySelector(".up").onclick = () => {
-    let i = symbols.indexOf(symbol.textContent);
-    symbol.textContent = symbols[(i + 1) % symbols.length];
-    tick(symbol);
+    let index = symbols.indexOf(symbolDiv.textContent);
+    symbolDiv.textContent = symbols[(index + 1) % symbols.length];
   };
 
   box.querySelector(".down").onclick = () => {
-    let i = symbols.indexOf(symbol.textContent);
-    symbol.textContent = symbols[(i - 1 + symbols.length) % symbols.length];
-    tick(symbol);
+    let index = symbols.indexOf(symbolDiv.textContent);
+    symbolDiv.textContent =
+      symbols[(index - 1 + symbols.length) % symbols.length];
   };
 });
 
-function tick(el) {
-  el.classList.remove("tick");
-  void el.offsetWidth;
-  el.classList.add("tick");
-}
-
-// Submit
+// Submit check
 document.getElementById("submitPuzzle").onclick = () => {
-  const attempt = [...boxes].map(b => b.querySelector(".symbol").textContent);
+  const attempt = Array.from(boxes).map(
+    box => box.querySelector(".symbol").textContent
+  );
 
-  if (attempt.join("") === correct.join("")) {
-    message.textContent = "You found the Hidden Immunity Idol!";
-    drum.currentTime = 0;
-    drum.play();
-    return;
-  }
-
-  fails++;
-  shake();
-
-  if (fails === 7) {
-    message.textContent = "SIX SEVENNNNNN!!!";
-    message.className = "message big flash";
+  if (attempt.join("") === correctSequence.join("")) {
+    result.textContent = "🎉 Congratulations! You found the Hidden Immunity Idol!";
   } else {
-    message.textContent = `Incorrect. Attempts: ${fails}`;
-    message.className = "message";
+    result.textContent = "Incorrect combination. Try again.";
   }
 };
-
-function shake() {
-  puzzle.classList.remove("shake");
-  void puzzle.offsetWidth;
-  puzzle.classList.add("shake");
-}
