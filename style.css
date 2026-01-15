@@ -1,95 +1,16 @@
-body { background: hotpink !important; }
-
 body {
-  margin: 0;
-  padding: 40px 12px;
   font-family: Arial, sans-serif;
-  color: #f4f4f0;
   text-align: center;
-
-  background:
-    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.85)),
-    url("o6background.png");
-  background-size: cover;
-  background-position: center;
-}
-
-/* Mist */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -40%;
-  background:
-    radial-gradient(circle, rgba(255,255,255,0.08), transparent 60%);
-  opacity: 0.25;
-  filter: blur(20px);
-  animation: mist 30s linear infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes mist {
-  from { transform: translate(-5%, -5%); }
-  to   { transform: translate(5%, 5%); }
-}
-
-.season-header img {
-  width: 90%;
-  max-width: 420px;
-}
-
-.subtitle {
-  letter-spacing: 2px;
-  margin-top: 6px;
-  color: #ffd98a;
-}
-
-.wrap {
-  margin-top: 20px;
-}
-
-.message {
-  min-height: 30px;
-  margin-bottom: 14px;
-  font-size: 14px;
-}
-
-.message.big {
-  font-weight: bold;
-  color: #f6b21a;
-}
-
-.message.flash {
-  animation: flashBounce 0.9s ease-out;
-}
-
-@keyframes flashBounce {
-  0%   { transform: scale(1); }
-  25%  { transform: scale(1.1) translateY(-6px); }
-  50%  { transform: scale(1); }
-  75%  { transform: scale(1.05) translateY(-3px); }
-  100% { transform: scale(1); }
+  background: #111;
+  color: #f4f4f0;
+  padding: 40px;
 }
 
 #idol-puzzle {
   display: flex;
   justify-content: center;
   gap: 12px;
-  flex-wrap: wrap;
-  padding: 16px;
-  border-radius: 14px;
-  background: rgba(0,0,0,0.4);
-}
-
-#idol-puzzle.shake {
-  animation: shake 0.35s;
-}
-
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  50% { transform: translateX(6px); }
-  75% { transform: translateX(-4px); }
-  100% { transform: translateX(0); }
+  margin: 20px 0;
 }
 
 .box {
@@ -99,28 +20,21 @@ body::before {
 }
 
 .symbol {
-  font-size: 30px;
+  font-size: 32px;
   margin: 6px 0;
-}
-
-.symbol.tick {
-  transform: scale(1.15);
 }
 
 .arrow {
   background: none;
-  border: none;
-  color: #ccc;
-  font-size: 18px;
+  border: 1px solid #555;
+  color: #fff;
+  font-size: 16px;
   cursor: pointer;
 }
 
 #submitPuzzle {
-  margin-top: 16px;
-  padding: 10px 18px;
-  border-radius: 12px;
-  border: none;
-  background: rgba(246,178,26,0.25);
-  color: #fff;
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
   cursor: pointer;
 }
