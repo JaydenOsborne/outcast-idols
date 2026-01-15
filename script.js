@@ -230,7 +230,15 @@ document.addEventListener("DOMContentLoaded", () => {
     shakePuzzle();
 
     if (failCount === 7) {
-      setMessage("SIX SEVENNNNNN!!!", true);
+function setMessage(text, big = false, flash = false) {
+  msg.textContent = text;
+  msg.classList.toggle("big", big);
+
+  // re-trigger flash animation reliably
+  msg.classList.remove("flash");
+  void msg.offsetWidth; // reflow
+  if (flash) msg.classList.add("flash");
+}
     } else {
       setMessage(`Incorrect. Attempts: ${failCount}`, false);
     }
