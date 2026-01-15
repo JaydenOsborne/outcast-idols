@@ -1,86 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Unlock the Hidden Idol</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Outcast S6 — Hidden Idol</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="season-header">
-  <img src="o6headerlogo.png" alt="Outcast Season Six">
-  <div class="subtitle">Hidden Immunity Idol</div>
-</div>
+  <header class="season-header">
+    <img src="o6headerlogo.png" alt="Outcast Season Six" />
+    <div class="subtitle">Hidden Immunity Idol Lock</div>
+  </header>
 
-<div id="idol-puzzle">
-  <div class="box">
-    <button class="arrow up" aria-label="Increase symbol">▲</button>
-    <div class="symbol">🌙</div>
-    <button class="arrow down" aria-label="Decrease symbol">▼</button>
-  </div>
+  <main class="wrap">
+    <div id="idol-puzzle" aria-label="Idol combination lock">
+      <div class="box">
+        <button class="arrow up" type="button" aria-label="Increase symbol 1">▲</button>
+        <div class="symbol" aria-label="Symbol 1">🌙</div>
+        <button class="arrow down" type="button" aria-label="Decrease symbol 1">▼</button>
+      </div>
 
-  <div class="box">
-    <button class="arrow up" aria-label="Increase symbol">▲</button>
-    <div class="symbol">🔥</div>
-    <button class="arrow down" aria-label="Decrease symbol">▼</button>
-  </div>
+      <div class="box">
+        <button class="arrow up" type="button" aria-label="Increase symbol 2">▲</button>
+        <div class="symbol" aria-label="Symbol 2">🔥</div>
+        <button class="arrow down" type="button" aria-label="Decrease symbol 2">▼</button>
+      </div>
 
-  <div class="box">
-    <button class="arrow up" aria-label="Increase symbol">▲</button>
-    <div class="symbol">🌿</div>
-    <button class="arrow down" aria-label="Decrease symbol">▼</button>
-  </div>
+      <div class="box">
+        <button class="arrow up" type="button" aria-label="Increase symbol 3">▲</button>
+        <div class="symbol" aria-label="Symbol 3">🌿</div>
+        <button class="arrow down" type="button" aria-label="Decrease symbol 3">▼</button>
+      </div>
 
-  <div class="box">
-    <button class="arrow up" aria-label="Increase symbol">▲</button>
-    <div class="symbol">🌊</div>
-    <button class="arrow down" aria-label="Decrease symbol">▼</button>
-  </div>
+      <div class="box">
+        <button class="arrow up" type="button" aria-label="Increase symbol 4">▲</button>
+        <div class="symbol" aria-label="Symbol 4">🌊</div>
+        <button class="arrow down" type="button" aria-label="Decrease symbol 4">▼</button>
+      </div>
 
-  <div class="box">
-    <button class="arrow up" aria-label="Increase symbol">▲</button>
-    <div class="symbol">🗿</div>
-    <button class="arrow down" aria-label="Decrease symbol">▼</button>
-  </div>
+      <div class="box">
+        <button class="arrow up" type="button" aria-label="Increase symbol 5">▲</button>
+        <div class="symbol" aria-label="Symbol 5">🗿</div>
+        <button class="arrow down" type="button" aria-label="Decrease symbol 5">▼</button>
+      </div>
 
-  <div class="box">
-    <button class="arrow up" aria-label="Increase symbol">▲</button>
-    <div class="symbol">🪶</div>
-    <button class="arrow down" aria-label="Decrease symbol">▼</button>
-  </div>
-</div>
-
-<button id="submitPuzzle">Submit</button>
-
-<!-- SURVIVOR-STYLE REVEAL MODAL -->
-<div id="revealOverlay" class="overlay" aria-hidden="true">
-  <div class="reveal" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
-    <div class="reveal-glow"></div>
-
-    <div class="reveal-header">
-      <div class="stamp">FOUND</div>
-      <h2 id="revealTitle">Hidden Immunity Idol</h2>
-      <p class="sub">This idol can be played to negate votes against you.</p>
-    </div>
-
-    <div class="idol-row">
-      <div class="idol-icon" aria-hidden="true">🗿</div>
-      <div class="idol-details">
-        <div class="detail-line"><span class="label">Idol Status:</span> <span class="value">VALID</span></div>
-        <div class="detail-line"><span class="label">Expires:</span> <span class="value">Final 5</span></div>
-        <div class="detail-line"><span class="label">Claim Code:</span> <span class="value code" id="claimCode">OUTCAST-IDOL</span></div>
+      <div class="box">
+        <button class="arrow up" type="button" aria-label="Increase symbol 6">▲</button>
+        <div class="symbol" aria-label="Symbol 6">🪶</div>
+        <button class="arrow down" type="button" aria-label="Decrease symbol 6">▼</button>
       </div>
     </div>
 
-    <div class="reveal-actions">
-      <button id="copyCode" class="btn secondary" type="button">Copy Claim Code</button>
-      <button id="closeReveal" class="btn primary" type="button">Close</button>
+    <button id="submitPuzzle" type="button">Submit</button>
+  </main>
+
+  <!-- REVEAL MODAL -->
+  <div id="revealOverlay" class="overlay" aria-hidden="true">
+    <div class="reveal" role="dialog" aria-modal="true" aria-labelledby="revealTitle">
+      <div class="reveal-glow"></div>
+
+      <div class="reveal-header">
+        <div class="stamp">FOUND</div>
+        <h2 id="revealTitle">Hidden Immunity Idol</h2>
+        <p class="sub">You uncovered an idol hidden deep in the Costa Rican jungle.</p>
+      </div>
+
+      <div class="idol-row">
+        <div class="idol-icon" aria-hidden="true">🗿</div>
+        <div class="idol-details">
+          <div class="detail-line"><span class="label">Status:</span> <span class="value">VALID</span></div>
+          <div class="detail-line"><span class="label">Expires:</span> <span class="value">Final 5</span></div>
+          <div class="detail-line"><span class="label">Claim Code:</span> <span class="value code" id="claimCode">OUTCAST-IDOL</span></div>
+        </div>
+      </div>
+
+      <div class="reveal-actions">
+        <button id="copyCode" class="btn secondary" type="button">Copy Claim Code</button>
+        <button id="closeReveal" class="btn primary" type="button">Close</button>
+      </div>
+
+      <div class="sparkle" aria-hidden="true"></div>
     </div>
-
-    <div class="sparkle" aria-hidden="true"></div>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
