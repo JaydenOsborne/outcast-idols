@@ -1,3 +1,25 @@
+.season-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.season-header img {
+  max-width: 420px;
+  width: 90%;
+  height: auto;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.6));
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 230, 150, 0.9);
+}
+
 :root{
   --bg: #0b0b0f;
   --panel: rgba(18,18,25,0.92);
