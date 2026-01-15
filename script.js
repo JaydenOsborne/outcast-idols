@@ -25,12 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // MESSAGE
   // =========================
-  function setMessage(text, big = false) {
+  function setMessage(text, big = false, flash = false) {
     msg.textContent = text;
     msg.classList.toggle("big", big);
+
+    // re-trigger flash animation reliably
+    msg.classList.remove("flash");
+    void msg.offsetWidth; // reflow
+    if (flash) msg.classList.add("flash");
   }
 
-  // Default message
   setMessage("Enter the correct sequence to claim the idol.");
 
   // =========================
@@ -185,8 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let failCount = 0;
 
   // =========================
-  // SYMBOL CYCLING
-  // (also unlock audio here for reliability)
+  // SYMBOL CYCLING + CLICK SOUND
   // =========================
   boxes.forEach((box) => {
     const symbolDiv = box.querySelector(".symbol");
@@ -230,15 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     shakePuzzle();
 
     if (failCount === 7) {
-function setMessage(text, big = false, flash = false) {
-  msg.textContent = text;
-  msg.classList.toggle("big", big);
-
-  // re-trigger flash animation reliably
-  msg.classList.remove("flash");
-  void msg.offsetWidth; // reflow
-  if (flash) msg.classList.add("flash");
-}
+      setMessage("SIX SEVENNNNNN!!!", true, true); // big + flash
     } else {
       setMessage(`Incorrect. Attempts: ${failCount}`, false);
     }
