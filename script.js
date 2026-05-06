@@ -15,23 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "⚡"
   ];
 
-  // Randomly generate the correct sequence
-  // Number = how many boxes/reels you have
-  const correctSequenceLength = 6;
-
-  const correctSequence = [];
-
-  for (let i = 0; i < correctSequenceLength; i++) {
-    const randomSymbol =
-      symbols[Math.floor(Math.random() * symbols.length)];
-
-    correctSequence.push(randomSymbol);
-  }
-
-  console.log("Correct Sequence:", correctSequence);
-
+  const correctSequence = ["⚡", "🐍", "🔥", "🌋", "🗿", "🌙"];
+  
   // Claim code shown on success
-  const claimCodeText = "OUTCAST-S6-IDOL";
+  const claimCodeText = "Screenshot this window and send to your Production Chat!";
 
   const boxes = document.querySelectorAll("#idol-puzzle .box");
   const overlay = document.getElementById("revealOverlay");
